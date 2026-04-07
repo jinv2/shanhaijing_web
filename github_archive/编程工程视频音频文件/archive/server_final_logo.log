@@ -1,0 +1,50 @@
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /final_with_logo.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] code 404, message File not found
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /logo_tx.webp HTTP/1.1" 404 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/04.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/10.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/14.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/07.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/15.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/16.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/08.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/06.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/13.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/05.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/09.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/17.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/12.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/18.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/11.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/19.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/20.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:04] code 404, message File not found
+127.0.0.1 - - [07/Apr/2026 16:28:04] "GET /favicon.ico HTTP/1.1" 404 -
+127.0.0.1 - - [07/Apr/2026 16:28:14] "GET /final_with_logo.html HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] code 404, message File not found
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /logo_tx.webp HTTP/1.1" 404 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/01.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/02.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/04.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/03.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/05.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/06.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/07.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/08.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/09.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/10.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/11.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/12.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/13.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/14.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/15.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/16.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/17.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/18.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/19.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:15] "GET /%E7%A5%9E%E5%85%BD%E5%9B%BE%E7%89%87/%E7%A5%9E%E5%85%BD/webp_versions/20.webp HTTP/1.1" 200 -
+127.0.0.1 - - [07/Apr/2026 16:28:18] code 404, message File not found
+127.0.0.1 - - [07/Apr/2026 16:28:18] "GET /favicon.ico HTTP/1.1" 404 -

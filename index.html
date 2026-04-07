@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>青丘山上的机器人 · 山海经小学生神兽图鉴</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: linear-gradient(135deg, #1a3c2c 0%, #0d2b1f 100%);
+            font-family: 'Segoe UI', 'Noto Sans CJK SC', '楷体', 'Microsoft YaHei', system-ui, sans-serif;
+            color: #f0e6c5;
+            min-height: 100vh;
+        }
+        
+        /* 顶部导航栏 */
+        .top-nav {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #d4a55a;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+        
+        .logo-img-small {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+        
+        .logo-text {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #d4a55a;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            color: #c9b896;
+            text-decoration: none;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.5rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            background: rgba(30, 20, 15, 0.6);
+            border-radius: 24px;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 1rem 0;
+            border-bottom: 2px solid #d4a55a;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .logo-img {
+            width: 48px;
+            height: 48px;
+            background: #d4a55a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+            color: #d4a55a;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #c9b896;
+            font-size: 0.75rem;
+        }
+        
+        .grandpa-message {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 4px solid #d4a55a;
+            padding: 0.8rem 1rem;
+            margin-bottom: 1.5rem;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+        
+        /* 折叠小说区域 */
+        .novel-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+        
+        .novel-header {
+            background: rgba(212, 165, 90, 0.2);
+            padding: 0.8rem 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+        
+        .novel-header:hover {
+            background: rgba(212, 165, 90, 0.3);
+        }
+        
+        .novel-title {
+            font-size: 1rem;
+            color: #d4a55a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+        
+        .novel-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            background: rgba(0, 0, 0, 0.3);
+        }
+        
+        .novel-content.open {
+            max-height: 2000px;
+            transition: max-height 0.8s ease-in;
+        }
+        
+        .novel-inner {
+            padding: 1rem;
+            font-family: '楷体', '华文楷书', cursive;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #e0d4b0;
+        }
+        
+        .novel-inner h2 {
+            color: #d4a55a;
+            font-size: 1rem;
+            margin: 0.8rem 0 0.4rem;
+        }
+        
+        .novel-inner p {
+            margin-bottom: 0.5rem;
+            text-indent: 2em;
+        }
+        
+        .novel-inner .author {
+            text-align: right;
+            margin-top: 0.8rem;
+        }
+        
+        .video-section {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 20px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .video-title {
+            font-size: 1rem;
+            margin-bottom: 0.8rem;
+            color: #d4a55a;
+            border-left: 3px solid #d4a55a;
+            padding-left: 0.6rem;
+        }
+        
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+        }
+        
+        .video-card {
+            background: rgba(40, 30, 25, 0.8);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+        
+        .video-card .info {
+            padding: 0.4rem;
+            text-align: center;
+            font-size: 0.7rem;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            color: #d4a55a;
+            text-align: center;
+            border-top: 1px solid #d4a55a;
+            border-bottom: 1px solid #d4a55a;
+            padding: 0.4rem;
+            display: inline-block;
+        }
+        
+        .title-wrapper {
+            text-align: center;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        
+        .card {
+            background: rgba(25, 20, 18, 0.85);
+            border-radius: 16px;
+            padding: 0.6rem;
+            border: 1px solid #d4a55a;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .card img {
+            width: 100%;
+            max-width: 100px;
+            height: auto;
+            border-radius: 12px;
+            background: #2a2018;
+            padding: 4px;
+        }
+        
+        .card .name {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #d4a55a;
+            word-break: break-word;
+        }
+        
+        .card .desc {
+            font-size: 0.6rem;
+            color: #a89878;
+            margin-top: 3px;
+            word-break: break-word;
+        }
+        
+        .agent-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin: 1.5rem 0;
+        }
+        
+        .agent-btn {
+            background: linear-gradient(135deg, #8b691b, #d4a55a);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #1a2a1f;
+            cursor: pointer;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 0.8rem;
+            color: #8a7a5a;
+            border-top: 1px solid #4a3a2a;
+            font-size: 0.65rem;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 1.5s ease-in-out infinite;
+        }
+        
+        @media (max-width: 480px) {
+            .container { padding: 0.8rem; }
+            h1 { font-size: 1.2rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+            .card img { max-width: 80px; }
+            .card .name { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav">
+        <a href="https://shensist.top" class="logo-link">
+            <img src="assets/img/logo_ts.webp" alt="神思智能体" class="logo-img-small" onerror="this.style.display='none'">
+            <span class="logo-text">神思智能体</span>
+        </a>
+        <div class="nav-links">
+            <a href="#">🏠 首页</a>
+            <a href="#" id="toggleNovelBtn">📖 小说</a>
+            <a href="#gallery">🐉 图鉴</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-area">
+                <div class="logo-img">🐉⚙️</div>
+                <h1>青丘山上的机器人</h1>
+                <div class="logo-img">🤖🏔️</div>
+            </div>
+            <div class="subtitle">山海经小学生 · 神兽机械化图鉴 | 守护者老爷爷的礼物</div>
+        </div>
+        
+        <div class="grandpa-message">
+            孩子们，青丘山上的神兽们有了新的形态。它们不再是遥远的传说，而是可以和你说话的机器人朋友。
+            点击每一个神兽，它就会变成机器人——这是爷爷年轻时在山中发现的秘密。20个神兽，20个故事。
+        </div>
+        
+        <!-- 折叠小说 -->
+        <div class="novel-section" id="novelSection">
+            <div class="novel-header" id="novelHeader">
+                <div class="novel-title">
+                    <span>📖</span> 《青丘山上的机器人》原著小说 · 文/金威
+                </div>
+                <span class="toggle-icon" id="toggleIcon">▼</span>
+            </div>
+            <div class="novel-content" id="novelContent">
+                <div class="novel-inner">
+                    <h2>一、吵闹的客人</h2>
+                    <p>在很久很久以前，有一座非常非常古老的山，叫青丘山。这座山可不是普通的山哦！《山海经》里记载着，山里有种神兽，长得像狐狸，却有九条毛茸茸的大尾巴。它的叫声像小宝宝在咿咿呀呀，可好听啦！山下还有一条清清的小溪，名叫英水，溪水哗啦啦地唱着歌。</p>
+                    <p>在青丘山上，有一棵活了三百岁的老桃树。桃树的枝叶像一把大伞，撑开一片凉凉的树荫。树下坐着一个人——不对，是躺着一个老爷爷。他是青丘山的守林人，守护着这座山和山里所有的秘密。老爷爷头上盖着一顶斗笠，呼噜呼噜睡得正香呢。他的身后，一块大石壁上刻着两个大字：<strong>青丘</strong>。</p>
+                    <p>突然，远处传来一阵脚步声，还有咯咯的笑声。“检测到开阔区域！适合玩耍！”一个亮晶晶的小机器人蹦蹦跳跳地跑了出来。它的身体是银白色的，眼睛闪着蓝蓝的光，像两颗小星星。“哇！这里真的有九尾狐的石像！”一个小女孩跟着跑过来，眼睛瞪得圆圆的。孩子们和机器人追啊、跑啊、笑啊，在青丘山的草地上撒起欢来。</p>
+                    
+                    <h2>二、被吵醒的守林人</h2>
+                    <p>太阳公公慢慢往山后躲，天色一点点暗下来。英水在月光下闪闪发光。孩子们围着机器人跑来跑去，桃树上的花瓣被震落了几片，飘飘悠悠地落在守林人的斗笠上。守林人的斗笠滑了下来。他睁开眼睛，慢慢坐起来。“《南山经》上写得清清楚楚，青丘山不可喧哗。”守林人的声音低低沉沉的，“你们这是在渎神。”一个小男孩吓了一跳，小声说：“对不起……我们只是想看看九尾狐。”</p>
+                    
+                    <h2>三、不高兴的守林人</h2>
+                    <p>守林人站起来，走到刻着“青丘”的石壁前。他两只胳膊交叉抱在胸前，像一堵高高的墙。“神兽们在这里安安静静地睡了几千年。你们带个铁疙瘩来，是对山海经的不敬。”小机器人的蓝光闪了闪，歪着脑袋想了想，用温柔的声音说：“我检测到，您并不讨厌我们。您只是怕我们惊扰了神兽。”守林人愣了一下，没有说话。</p>
+                    
+                    <h2>四、小机器人的提议</h2>
+                    <p>守林人转过身，望着英水的下游。月光照在他的背影上，看起来有点孤单。小机器人轻轻走到他身边。它身上的蓝光慢慢变成了暖暖的黄色，像一盏小小的灯笼。“我可以学习安静，”小机器人认认真真地说，“也可以学习尊重。”守林人转过头，看着这个小小的铁疙瘩，又看看孩子们期待的脸。“哼，”他的声音不像刚才那么凶了，“那你们来山海经世界，到底想做什么呀？”</p>
+                    
+                    <h2>五、守林人的条件</h2>
+                    <p>守林人坐回了老桃树下。孩子们围在他身边，像一群乖乖的小鸟。“我们想听山海经里所有神兽的故事！”孩子们一起喊起来。守林人想了想，看着小机器人说：“那……机器人不许发出滴滴嘟嘟的电子音。这里只该有风的声音和水的声音。”小机器人用力地点点头，把身上的声音按钮关掉了。</p>
+                    
+                    <h2>六、第一个故事</h2>
+                    <p>月光亮亮的，照在石壁上的九尾狐画像上。守林人指着画像，开始讲故事啦！“九尾狐呀，是很久很久以前的神兽。它虽然会吃人，但它也能保护人们不中妖邪。它守护着青丘山，从春天到冬天，从今年到明年，从来不离开。”小机器人的蓝光微微地闪着。“守护，”小机器人轻轻地说，“从来不是因为它强大，而是因为它选择留下。”</p>
+                    
+                    <h2>七、小机器人的曲子</h2>
+                    <p>故事讲完了。英水哗啦啦的声音变得好清楚。小机器人低下头，蓝光闪得好快。过了一会儿，它抬起头，胸口的灯亮了起来。“我做了一首曲子，”小机器人开心地说，“叫《青丘·九尾》。”守林人惊讶地问：“你怎么知道……九尾的尾音应该是‘呜’？”小机器人没有回答。它胸口的灯一闪一闪，轻柔的音乐在月光下飘了出来——有风的声音，有水的声音，还有九尾狐在远处轻轻唱歌的声音。</p>
+                    
+                    <h2>八、守林人爷爷笑了</h2>
+                    <p>音乐停下了。月光洒在草地上，石壁上的九尾狐好像活了过来。守林人的眼眶红了。一个小女孩轻轻拉住他的袖子。“守林人爷爷，我们不会走了。我们想帮你守护这里。”守林人笑了，笑着笑着，眼泪从眼角滑了下来。“好。青丘山……有你们了。”</p>
+                    
+                    <h2>九、大家和好啦</h2>
+                    <p>夜深了，桃树的花瓣轻轻飘落。孩子们把小机器人抱在中间，像抱着一个暖暖的小太阳。“检测到守林人爷爷笑了！”小机器人开心地喊，“谢谢爷爷！”守林人摸摸小机器人的头，笑着说：“以后你们可以来。但每次来，要带一个《山海经》的故事给我。”</p>
+                    
+                    <h2>十、一个美好的约定</h2>
+                    <p>天快亮了。东边的天空亮起第一道光，照在英水上，溪水变得金灿灿的。孩子们靠着老桃树睡着了。守林人站起来，看着小机器人和孩子们，心里暖暖的。“下次来，我教你读《山海经》。每一座山，每一只神兽，都有自己的名字。”小机器人轻轻说：“我也想守护青丘山。用故事，用音乐，用安静。滴滴。”</p>
+                    <p>天空越来越亮，新的一天来了。画面慢慢变暗。小机器人的声音轻轻响起，像在对每一个小朋友说话：“你也想来山海经世界吗？打开智能体网页，我等你。”</p>
+                    <p><strong>山海经AI智能体</strong><br><strong>带领孩子们在山海经世界里与神兽娱乐</strong></p>
+                    <div class="author">（完）<br>2026年4月7日</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-section">
+            <div class="video-title">🎬 青丘山的故事 · 视频作品</div>
+            <div class="video-grid">
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEdU&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">📺 动画版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1MZDaBhEPK&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">📖 故事版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEH9&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">🎵 轨道版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1tZDaBhEgh&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">🎹 MIDI版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1qBDaB5EWf&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">🤖 反重力版</div></div>
+            </div>
+        </div>
+        
+        <div id="gallery" class="title-wrapper">
+            <div class="section-title">🐉 点击神兽 · 变成机器人 🤖</div>
+        </div>
+        
+        <div class="gallery-grid" id="gallery-grid"></div>
+        
+        <div class="agent-controls">
+            <button class="agent-btn" id="floatBtn">🌀 让图鉴飞起来</button>
+            <button class="agent-btn" id="resetBtn">⏎ 落回地面</button>
+            <button class="agent-btn" id="speakBtn">🎤 爷爷讲故事</button>
+        </div>
+        
+        <div class="footer">
+            📖 改编自《青丘山上的机器人》小说 · 守护者老爷爷口述<br>
+            © 2026 神思智能体 (SHENSIST) · 官方联络WX｜ Shensi-ST
+        </div>
+    </div>
+
+    <script>
+        // 神兽名字（修复第13、14个乱码）
+        const names = [
+            "鹿蜀", "旋龟", "鯥鱼", "类", "猼訑", "羬羊", "灌灌", "赤鱬", 
+            "鴸鸟", "长右", "彘", "䍺", "𪁺𩿧", "𩶯魮", "蛊雕", "龙鱼",
+            "白泽", "麒麟", "凤凰", "烛龙"
+        ];
+        
+        const robotDesc = [
+            "机械鹿蜀 · 声波护林", "钢甲旋龟 · 净水核心", "深潜鯥鱼 · 探测先锋", "镜像类 · 双态变换",
+            "钢鬃猼訑 · 勇气之心", "金角羬羊 · 能量护盾", "音律灌灌 · 警报卫士", "赤鱬机甲 · 深海信使",
+            "铁翼鴸鸟 · 天空之眼", "长右机械臂 · 救援侠", "重装彘甲 · 大地之力", "幻影䍺 · 迷彩守护",
+            "胜遇机甲 · 双鸟协同", "虎蛟战甲 · 水中霸主", "暗影蛊雕 · 夜巡者", "龙鱼战甲 · 江河巡护",
+            "白泽智者 · 知识核心", "麒麟圣械 · 平衡之力", "凤凰火羽 · 重生系统", "烛龙光轮 · 时光守护"
+        ];
+        
+        // 折叠功能
+        const novelContent = document.getElementById('novelContent');
+        const toggleIcon = document.getElementById('toggleIcon');
+        const novelHeader = document.getElementById('novelHeader');
+        const toggleNovelBtn = document.getElementById('toggleNovelBtn');
+        
+        function toggleNovel() {
+            novelContent.classList.toggle('open');
+            toggleIcon.textContent = novelContent.classList.contains('open') ? '▲' : '▼';
+        }
+        
+        novelHeader.addEventListener('click', toggleNovel);
+        if (toggleNovelBtn) {
+            toggleNovelBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleNovel();
+            });
+        }
+        
+        // 图鉴生成
+        const container = document.getElementById('gallery-grid');
+        const pathTests = [
+            { origin: "assets/img/神兽图片/神兽/webp_versions/", robot: "assets/img/神兽图片/机器人/webp_versions/" },
+            { origin: "./assets/img/神兽图片/神兽/webp_versions/", robot: "./assets/img/神兽图片/机器人/webp_versions/" }
+        ];
+        let currentPath = pathTests[0];
+        
+        for (let i = 1; i <= 20; i++) {
+            const num = i.toString().padStart(2, '0');
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.setAttribute('data-id', num);
+            card.setAttribute('data-state', 'origin');
+            
+            const origSrc = currentPath.origin + `${num}.webp`;
+            const robotSrc = currentPath.robot + `${num}R.webp`;
+            
+            card.innerHTML = `
+                <img src="${origSrc}" alt="神兽${num}" onerror="this.src='https://placehold.co/100x100?text=${encodeURIComponent(names[i-1])}'">
+                <div class="name">🐉 ${names[i-1]}</div>
+                <div class="desc">山海经神兽 · 点击化身机甲</div>
+            `;
+            
+            card.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const nameDiv = this.querySelector('.name');
+                const descDiv = this.querySelector('.desc');
+                
+                if (this.getAttribute('data-state') === 'origin') {
+                    img.src = robotSrc;
+                    nameDiv.innerHTML = `🤖 ${names[i-1]} · 机甲`;
+                    descDiv.innerHTML = robotDesc[i-1];
+                    this.setAttribute('data-state', 'robot');
+                } else {
+                    img.src = origSrc;
+                    nameDiv.innerHTML = `🐉 ${names[i-1]}`;
+                    descDiv.innerHTML = '山海经神兽 · 点击化身机甲';
+                    this.setAttribute('data-state', 'origin');
+                }
+            });
+            
+            container.appendChild(card);
+        }
+        
+        // 悬浮效果
+        let floating = false;
+        document.getElementById('floatBtn').addEventListener('click', () => {
+            const cards = document.querySelectorAll('.card');
+            if (floating) {
+                cards.forEach(c => c.classList.remove('floating'));
+                floating = false;
+            } else {
+                cards.forEach((c, i) => {
+                    c.classList.add('floating');
+                    c.style.animationDelay = `${i * 0.03}s`;
+                });
+                floating = true;
+            }
+        });
+        
+        document.getElementById('resetBtn').addEventListener('click', () => {
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('floating'));
+            floating = false;
+        });
+        
+        document.getElementById('speakBtn').addEventListener('click', () => {
+            const msg = "孩子们，青丘山上的神兽们已经化身为机器人。点击每一个神兽，它就会变成你的机械伙伴。";
+            const utterance = new SpeechSynthesisUtterance(msg);
+            utterance.lang = 'zh-CN';
+            utterance.rate = 0.85;
+            window.speechSynthesis.speak(utterance);
+        });
+        
+        console.log('✅ 青丘山上的机器人 · 20神兽图鉴已加载');
+    </script>
+</body>
+</html>

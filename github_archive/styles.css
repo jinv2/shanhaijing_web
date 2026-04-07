@@ -1,0 +1,269 @@
+/* 核心色调与字体 */
+:root {
+    --color-bg-forest: #0a5c36;
+    --color-bg-light: #e8f4e8;
+    --color-highlight: #f5c542;
+    --font-kuaiLe: 'ZCOOL KuaiLe', cursive, sans-serif;
+    --border-radius-main: 16px;
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-kuaiLe);
+    background-color: var(--color-bg-forest);
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 主容器：响应式布局 */
+.app-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* 如果屏幕过窄，变为上下排列以防崩溃 */
+@media screen and (max-width: 1200px) {
+    .app-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+/* 左侧智能体 */
+.agent-sidebar {
+    flex: 0 0 300px;
+    background-color: var(--color-bg-light);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .agent-sidebar {
+        flex: 0 0 150px;
+    }
+}
+
+.agent-placeholder {
+    text-align: center;
+    color: var(--color-bg-forest);
+    border: 2px dashed var(--color-bg-forest);
+    padding: 40px 20px;
+    border-radius: calc(var(--border-radius-main) / 2);
+    width: 100%;
+}
+
+/* 右侧主区域 */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+/* 隐藏滚动条美化 */
+.main-content::-webkit-scrollbar {
+    width: 10px;
+}
+.main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(10, 92, 54, 0.5);
+    border-radius: 5px;
+}
+
+/* 视频区 */
+.video-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: var(--color-bg-light);
+    padding: 20px;
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-soft);
+}
+
+.video-container {
+    width: 100%;
+    background-color: #000; /* 视频缺失时的替代底色 */
+    border-radius: calc(var(--border-radius-main) / 2);
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    /* 限定高度防止撑满 */
+    aspect-ratio: 21 / 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-title {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    color: var(--color-highlight);
+    z-index: 10;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    pointer-events: none;
+}
+
+.video-fallback {
+    position: absolute;
+    color: #fff;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 5;
+    position: relative;
+}
+
+.sync-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.btn {
+    font-family: inherit;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: calc(var(--border-radius-main) / 2);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.primary-btn {
+    background-color: var(--color-highlight);
+    color: var(--color-bg-forest);
+    box-shadow: 0 4px 6px rgba(245, 197, 66, 0.4);
+}
+
+.primary-btn:hover {
+    box-shadow: 0 6px 10px rgba(245, 197, 66, 0.6);
+}
+
+.status-msg {
+    color: var(--color-bg-forest);
+    font-size: 0.95rem;
+    font-weight: bold;
+}
+
+/* 折叠面板区 */
+.accordion-section {
+    background-color: var(--color-bg-light);
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.accordion-toggle {
+    width: 100%;
+    background-color: var(--color-bg-forest);
+    color: var(--color-bg-light);
+    padding: 18px 25px;
+    border: none;
+    text-align: left;
+    font-size: 1.2rem;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.accordion-toggle:hover {
+    background-color: #0d8048; /* 加深一点 */
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+/* 使用 JS 控制 max-height 替代固定 expanded */
+
+.grid-gallery {
+    padding: 20px;
+    display: grid;
+    /* 自适应格子 */
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 15px;
+}
+
+.beast-card {
+    background-color: rgba(10, 92, 54, 0.08);
+    border: 2px dashed var(--color-bg-forest);
+    border-radius: calc(var(--border-radius-main) / 2);
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--color-bg-forest);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.beast-card:hover {
+    background-color: var(--color-highlight);
+    border-color: var(--color-bg-forest);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 下载区 */
+.download-section {
+    background-color: var(--color-bg-light);
+    padding: 25px;
+    border-radius: var(--border-radius-main);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.download-btn {
+    text-decoration: none;
+    background-color: var(--color-bg-forest);
+    color: var(--color-bg-light);
+    box-shadow: 0 4px 6px rgba(10, 92, 54, 0.3);
+}
+
+.download-btn:hover {
+    background-color: #0d8048;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(10, 92, 54, 0.4);
+}

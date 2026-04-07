@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>神思智能体 · 反重力神兽机器人图鉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            font-family: 'Segoe UI', 'Noto Sans CJK SC', system-ui, -apple-system, sans-serif;
+            color: #eee;
+            min-height: 100vh;
+        }
+
+        @keyframes antigravity {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ffcc00; }
+            100% { text-shadow: 0 0 20px #ff6600; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid rgba(255, 200, 100, 0.3);
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ffd89b, #c7e9fb, #ff9a9e);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+
+        .subtitle {
+            color: #aaa;
+            margin-top: 0.5rem;
+        }
+
+        /* 视频区域 */
+        .video-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 200, 100, 0.3);
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .video-card {
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .video-card .info {
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .video-card .info h3 {
+            font-size: 1rem;
+            color: #ffd966;
+        }
+
+        /* 图鉴区域 */
+        .gallery-section {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #ffcc00;
+            padding-left: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(20, 25, 45, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 215, 150, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: #ffcc00;
+            animation: antigravity 0.5s ease-in-out;
+        }
+
+        .card-header {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #ffd966;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .card-header span {
+            background: #2a2a4a;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            color: #ffdfa5;
+        }
+
+        .duo {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .duo-item {
+            flex: 1;
+            min-width: 110px;
+            text-align: center;
+        }
+
+        .duo-item img {
+            width: 100%;
+            max-width: 130px;
+            height: auto;
+            border-radius: 18px;
+            background: #0f0f1a;
+            padding: 6px;
+            transition: all 0.3s;
+        }
+
+        .duo-item img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
+        }
+
+        .duo-item .label {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #ffd966;
+        }
+
+        /* 智能体控制区 */
+        .agent-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .agent-btn {
+            background: linear-gradient(135deg, #ffcc00, #ff8800);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #1a1a2e;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .agent-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 200, 0, 0.5);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            color: #6a6a8a;
+            border-top: 1px solid #2a2a4a;
+        }
+
+        .footer a {
+            color: #ffcf7a;
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .container { padding: 1rem; }
+            h1 { font-size: 1.8rem; }
+            .duo-item img { max-width: 90px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>⚡ 神思智能体 · 反重力神兽机器人 ⚙️</h1>
+        <div class="subtitle">《山海经》x 机械降神 | 20灵兽机械化图鉴 | ANTIGRAVITY MODE</div>
+    </div>
+
+    <!-- B站视频区 -->
+    <div class="video-section">
+        <div class="video-title">🎬 视频作品集</div>
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEdU&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <div class="info"><h3>🎥 动画版</h3></div>
+            </div>
+            <div class="video-card">
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1MZDaBhEPK&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <div class="info"><h3>📖 故事版</h3></div>
+            </div>
+            <div class="video-card">
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEH9&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <div class="info"><h3>🎵 轨道版</h3></div>
+            </div>
+            <div class="video-card">
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1tZDaBhEgh&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <div class="info"><h3>🎹 MIDI版</h3></div>
+            </div>
+            <div class="video-card">
+                <iframe src="//player.bilibili.com/player.html?bvid=BV1qBDaB5EWf&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe>
+                <div class="info"><h3>🤖 反重力最终版</h3></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 神兽机器人图鉴 -->
+    <div class="gallery-section">
+        <div class="section-title">🐉 灵兽 · 机械图鉴 🤖</div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+
+    <!-- 智能体控制台 -->
+    <div class="agent-controls">
+        <button class="agent-btn" id="floatBtn">🌀 全图鉴悬浮</button>
+        <button class="agent-btn" id="resetBtn">⏎ 重置位置</button>
+        <button class="agent-btn" id="speakBtn">🎤 语音播报状态</button>
+    </div>
+
+    <div class="footer">
+        © 2026 神思智能体 (SHENSIST) · 反重力神兽机器人图鉴 · 山海经机械降神计划 · 
+        <a href="https://shensist.top" target="_blank">shensist.top</a>
+    </div>
+</div>
+
+<script>
+    // 图鉴路径（相对于当前html文件所在目录）
+    const ORIGIN_BASE = "神兽图片/神兽/webp_versions/";
+    const ROBOT_BASE = "神兽图片/机器人/webp_versions/";
+    
+    // 生成图鉴
+    const container = document.getElementById('gallery-grid');
+    
+    for (let i = 1; i <= 20; i++) {
+        const num = i.toString().padStart(2, '0');
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.id = `card-${num}`;
+        card.innerHTML = `
+            <div class="card-header">
+                <span>⚡ 神兽 ${num}</span>
+                <span>🔧 机器人 ${num}</span>
+            </div>
+            <div class="duo">
+                <div class="duo-item">
+                    <img src="${ORIGIN_BASE}${num}.webp" alt="神兽${num}" loading="lazy" onerror="this.src='https://placehold.co/130x130?text=神兽${num}'">
+                    <div class="label">🐉 灵兽形态</div>
+                </div>
+                <div class="duo-item">
+                    <img src="${ROBOT_BASE}${num}R.webp" alt="机器人${num}" loading="lazy" onerror="this.src='https://placehold.co/130x130?text=机器人${num}'">
+                    <div class="label">🤖 机械降神</div>
+                </div>
+            </div>
+        `;
+        container.appendChild(card);
+    }
+    
+    // 反重力悬浮函数
+    let floatActive = false;
+    
+    document.getElementById('floatBtn').addEventListener('click', () => {
+        const cards = document.querySelectorAll('.card');
+        if (floatActive) {
+            cards.forEach(card => {
+                card.style.animation = '';
+            });
+            floatActive = false;
+            document.getElementById('floatBtn').textContent = '🌀 全图鉴悬浮';
+        } else {
+            cards.forEach((card, idx) => {
+                card.style.animation = `antigravity ${0.8 + idx * 0.03}s ease-in-out infinite`;
+            });
+            floatActive = true;
+            document.getElementById('floatBtn').textContent = '⏸ 停止悬浮';
+        }
+    });
+    
+    document.getElementById('resetBtn').addEventListener('click', () => {
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.style.animation = '';
+        });
+        floatActive = false;
+        document.getElementById('floatBtn').textContent = '🌀 全图鉴悬浮';
+    });
+    
+    document.getElementById('speakBtn').addEventListener('click', () => {
+        const msg = '神思智能体反重力系统运行中，二十对神兽机器人图鉴已就绪';
+        const utterance = new SpeechSynthesisUtterance(msg);
+        utterance.lang = 'zh-CN';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+    });
+    
+    console.log('✅ 反重力神兽机器人图鉴已加载，共20对');
+</script>
+</body>
+</html>

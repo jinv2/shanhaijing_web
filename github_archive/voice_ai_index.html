@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>神思智能体 · 反重力神兽机器人图鉴</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a3a 100%);
+            font-family: 'Segoe UI', 'Noto Sans CJK SC', system-ui, -apple-system, sans-serif;
+            color: #eee;
+            min-height: 100vh;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 200, 100, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo img {
+            height: 48px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, #ffd89b, #c7e9fb);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-btn {
+            background: transparent;
+            border: 1px solid #ffcc00;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            color: #ffcc00;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-btn.active {
+            background: #ffcc00;
+            color: #1a1a2e;
+            box-shadow: 0 0 15px rgba(255, 200, 0, 0.5);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            background: #ffcc00;
+            color: #1a1a2e;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+        }
+
+        /* 页面切换 */
+        .page {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 神思庭首页样式（保留原语音交互） */
+        .shensist-home {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .shensist-home h2 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .shensist-home .sub {
+            color: #aaa;
+            margin-bottom: 2rem;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .number-card {
+            background: rgba(255, 200, 100, 0.1);
+            border: 1px solid rgba(255, 200, 100, 0.3);
+            border-radius: 20px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .number-card:hover {
+            background: rgba(255, 200, 100, 0.3);
+            transform: scale(1.05);
+        }
+
+        .voice-status {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            font-family: monospace;
+            color: #0f0;
+        }
+
+        /* 反重力图鉴样式 */
+        .video-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .video-card {
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .video-card iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .video-card .info {
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(20, 25, 45, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 215, 150, 0.3);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: #ffcc00;
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 0.8rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .card-header span {
+            background: #2a2a4a;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+        }
+
+        .duo {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .duo-item {
+            flex: 1;
+            text-align: center;
+        }
+
+        .duo-item img {
+            width: 100%;
+            max-width: 130px;
+            border-radius: 18px;
+            background: #0f0f1a;
+            padding: 6px;
+        }
+
+        /* 版权 footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-top: 1px solid #2a2a4a;
+            color: #6a6a8a;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .navbar { flex-direction: column; }
+            .number-grid { grid-template-columns: repeat(5, 1fr); }
+            .duo-item img { max-width: 90px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <img src="logo_ts.webp" alt="神思智能体" onerror="this.src='https://placehold.co/48x48?text=神思'">
+        <h1>神思智能体</h1>
+    </div>
+    <div class="nav-links">
+        <button class="nav-btn active" data-page="home">🏠 神思庭</button>
+        <button class="nav-btn" data-page="gallery">🤖 反重力图鉴</button>
+        <button class="nav-btn" data-page="copyright">📜 版权</button>
+    </div>
+</div>
+
+<div class="container">
+    <!-- 首页：语音交互 -->
+    <div id="home-page" class="page active-page">
+        <div class="shensist-home">
+            <h2>神 思 智 能 体</h2>
+            <div class="sub">神思庭 · L-A-T-T · 说数字 1-15 打开</div>
+            <div class="number-grid" id="number-grid">
+                <!-- JS 生成 1-15 -->
+            </div>
+            <div class="voice-status" id="voice-status">
+                🎤 点击数字或语音输入...
+            </div>
+        </div>
+    </div>
+
+    <!-- 反重力图鉴页 -->
+    <div id="gallery-page" class="page">
+        <div class="video-section">
+            <div class="video-title">🎬 视频作品集</div>
+            <div class="video-grid">
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEdU&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">动画版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1MZDaBhEPK&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">故事版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1TZDaBhEH9&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">轨道版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1tZDaBhEgh&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">MIDI版</div></div>
+                <div class="video-card"><iframe src="//player.bilibili.com/player.html?bvid=BV1qBDaB5EWf&page=1&high_quality=1&autoplay=0" allowfullscreen></iframe><div class="info">反重力最终版</div></div>
+            </div>
+        </div>
+        <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+
+    <!-- 版权页 -->
+    <div id="copyright-page" class="page">
+        <div class="shensist-home">
+            <h2>📜 版权声明</h2>
+            <div class="sub">神思智能体 · 反重力神兽机器人计划</div>
+            <div style="text-align: left; max-width: 800px; margin: 2rem auto; line-height: 1.8;">
+                <p>© 2026 神思智能体 (SHENSIST) 版权所有。</p>
+                <p>本网站所有内容（包括但不限于文字、图片、视频、音频、代码）均为原创或已获授权。</p>
+                <p>《山海经》神兽形象及机器人二次创作版权归 神思智能体 所有。</p>
+                <p>B站视频链接：动画 / 故事 / 轨道 / MIDI / 反重力最终版 均已获得合法传播授权。</p>
+                <p>未经书面许可，禁止任何形式的复制、转载或商业使用。</p>
+                <p>项目官网：<a href="https://shensist.top" target="_blank" style="color:#ffcc00;">https://shensist.top</a></p>
+                <p>联系邮箱：shensist@proton.me</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    © 2026 神思智能体 (SHENSIST) · 反重力神兽机器人图鉴 · 山海经机械降神计划 · 保留一切权利
+</div>
+
+<script>
+    // 页面切换
+    const pages = {
+        home: document.getElementById('home-page'),
+        gallery: document.getElementById('gallery-page'),
+        copyright: document.getElementById('copyright-page')
+    };
+    const btns = document.querySelectorAll('.nav-btn');
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const pageId = btn.dataset.page;
+            btns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            Object.values(pages).forEach(page => page.classList.remove('active-page'));
+            if (pageId === 'home') pages.home.classList.add('active-page');
+            if (pageId === 'gallery') pages.gallery.classList.add('active-page');
+            if (pageId === 'copyright') pages.copyright.classList.add('active-page');
+        });
+    });
+
+    // ========== 首页语音交互（1-15） ==========
+    const names = [
+        "鸣响伯乐", "九尾狐", "狡·真单", "琅玕", "金箍棒",
+        "智信AUI", "AUI矩阵", "归墟", "小智", "我就要！",
+        "碗底青", "双子演播室", "创世", "神思AirEye", "PTVoice Pro"
+    ];
+
+    const grid = document.getElementById('number-grid');
+    const statusDiv = document.getElementById('voice-status');
+
+    for (let i = 1; i <= 15; i++) {
+        const card = document.createElement('div');
+        card.className = 'number-card';
+        card.innerHTML = `<div>${i}</div><div style="font-size:0.7rem;">${names[i-1]}</div>`;
+        card.onclick = () => {
+            statusDiv.innerHTML = `🎤 你点击了：${i} - ${names[i-1]}<br>正在打开...`;
+            speak(names[i-1]);
+        };
+        grid.appendChild(card);
+    }
+
+    function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'zh-CN';
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // 语音识别（可选）
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'zh-CN';
+        recognition.continuous = false;
+        recognition.onresult = (event) => {
+            const word = event.results[0][0].transcript;
+            const num = parseInt(word);
+            if (!isNaN(num) && num >= 1 && num <= 15) {
+                statusDiv.innerHTML = `🎤 语音识别：${num} - ${names[num-1]}<br>正在打开...`;
+                speak(names[num-1]);
+            } else {
+                statusDiv.innerHTML = `🎤 未识别到数字1-15，请重试。`;
+            }
+        };
+        recognition.onerror = () => {
+            statusDiv.innerHTML = `🎤 语音识别失败，请点击数字。`;
+        };
+        document.body.addEventListener('click', () => {
+            try { recognition.start(); } catch(e) {}
+        });
+    }
+
+    // ========== 反重力图鉴加载 ==========
+    const galleryContainer = document.getElementById('gallery-grid');
+    const ORIGIN_BASE = "神兽图片/神兽/webp_versions/";
+    const ROBOT_BASE = "神兽图片/机器人/webp_versions/";
+
+    for (let i = 1; i <= 20; i++) {
+        const num = i.toString().padStart(2, '0');
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-header">
+                <span>⚡ 神兽 ${num}</span>
+                <span>🔧 机器人 ${num}</span>
+            </div>
+            <div class="duo">
+                <div class="duo-item">
+                    <img src="${ORIGIN_BASE}${num}.webp" alt="神兽${num}" onerror="this.src='https://placehold.co/130x130?text=神兽${num}'">
+                    <div>🐉 灵兽</div>
+                </div>
+                <div class="duo-item">
+                    <img src="${ROBOT_BASE}${num}R.webp" alt="机器人${num}" onerror="this.src='https://placehold.co/130x130?text=机器人${num}'">
+                    <div>🤖 机械</div>
+                </div>
+            </div>
+        `;
+        galleryContainer.appendChild(card);
+    }
+</script>
+</body>
+</html>

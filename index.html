@@ -335,6 +335,19 @@
             .card img { max-width: 80px; }
             .card .name { font-size: 0.7rem; }
         }
+        
+        /* 严出版权保护：禁止选中、禁用拖拽 */
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        img {
+            -webkit-user-drag: none;
+        }
     </style>
 </head>
 <body>
@@ -552,6 +565,43 @@
         });
         
         console.log('✅ 青丘山上的机器人 · 20神兽图鉴已加载');
+        
+        // 严格版权保护脚本
+        document.addEventListener('contextmenu', e => {
+            e.preventDefault();
+        }); // 禁用右键菜单
+        
+        document.addEventListener('dragstart', e => {
+            e.preventDefault();
+        }); // 禁用全部元素拖拽
+        
+        document.addEventListener('selectstart', e => {
+            e.preventDefault();
+        }); // 禁用内容选中
+        
+        document.addEventListener('copy', e => {
+            e.preventDefault();
+            alert('版权所有 © 2026 神思智能体，由 Shensist Matrix 控制。禁止复制或盗用内容！');
+        }); // 禁用复制并弹出警告
+        
+        document.addEventListener('keydown', e => {
+            // 屏蔽 F12
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // 屏蔽 Ctrl+Shift+I / C / J (开发者工具)
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'C' || e.key === 'c' || e.key === 'J' || e.key === 'j')) {
+                e.preventDefault();
+            }
+            // 屏蔽 Ctrl+U (查看源码)
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+            }
+            // 屏蔽 Ctrl+S (保存网页)
+            if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+                e.preventDefault();
+            }
+        }); 
     </script>
 </body>
 </html>
